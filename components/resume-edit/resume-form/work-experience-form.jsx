@@ -47,7 +47,7 @@ const WorkExperienceForm = ({ isSaved, setIsSaved }) => {
   return (
     <div>
       <h2>What had you done for living ?</h2>
-      <p>Let's start with your work experience</p>
+      <p>Let{"'"}s start with your work experience</p>
 
       <form className="flex flex-col mt-4 gap-4">
         {workExperience.map((exp, index) => (

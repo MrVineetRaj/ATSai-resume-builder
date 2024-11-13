@@ -42,7 +42,7 @@ const EducationForm = ({ isSaved, setIsSaved }) => {
   return (
     <div>
       <h2>Educational Detail</h2>
-      <p>Let's take note on your educational journey</p>
+      <p>Let{"'"}s take note on your educational journey</p>
 
       <form className="flex flex-col mt-4 gap-4">
         {educationalDetail?.map((edu, index) => (

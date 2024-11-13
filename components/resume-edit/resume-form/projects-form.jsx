@@ -45,7 +45,7 @@ const ProjectsForm = ({ isSaved, setIsSaved }) => {
   return (
     <div>
       <h2>What had you done for living ?</h2>
-      <p>Let's start with your work project</p>
+      <p>Let{"'"}s start with your work project</p>
 
       <form className="flex flex-col mt-4 gap-4">
         {projects.map((project, index) => (
