@@ -28,6 +28,7 @@ const ResumeFormConfig = ({ activeSection, setActiveSection, isSaved }) => {
   const dispatch = useDispatch();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [jobDescription, setJobDescription] = useState("");
   const resume_section_option = [
     {
       value: "personal_details",
@@ -101,21 +102,24 @@ const ResumeFormConfig = ({ activeSection, setActiveSection, isSaved }) => {
     setIsLoading(true);
     getResumes(resumeObj?.user).then((res) => {
       // console.log(res.data[0] || {});
-      generateResumeWithAi(JSON.stringify(res.data[1] || {})).then(
-        async (res) => {
-          try {
-            const json_resume = JSON.parse(res);
-            console.log(json_resume);
-            updateOneResume(resumeObj._id, json_resume);  
-            dispatch(setUserResume(json_resume));
-          } catch (e) {
-            console.log(e);
-          }
 
-          setIsDialogOpen(false);
-          setIsLoading(false);
+      const resume_string = JSON.stringify(res.data[1] || {});
+      const complete_input = `${resume_string} customize it for ${jobDescription} please sort all project according to it's relevance to the job description`;
+
+      console.log("Resume Received", complete_input);
+      generateResumeWithAi(complete_input).then(async (res) => {
+        try {
+          const json_resume = JSON.parse(res);
+          console.log(json_resume);
+          updateOneResume(resumeObj._id, json_resume);
+          dispatch(setUserResume(json_resume));
+        } catch (e) {
+          console.log(e);
         }
-      );
+
+        setIsDialogOpen(false);
+        setIsLoading(false);
+      });
     });
   };
   return (
@@ -150,8 +154,8 @@ const ResumeFormConfig = ({ activeSection, setActiveSection, isSaved }) => {
                   <FormField
                     label="Job Description"
                     type="textarea"
-                    handleChange={() => {
-                      // handle change here
+                    handleChange={(value) => {
+                      setJobDescription(value);
                     }}
                     defaultValue={""}
                   />

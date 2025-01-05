@@ -13,6 +13,11 @@ const PersonalDetailsPreview = () => {
       <p className="text-xs">{resume_obj?.job_title}</p>
       <div className="flex justify-between w-full">
         <p className="text-xs">{resume_obj?.phone}</p>
+        {resume_obj?.links.map((link, index) => (
+          <a className="text-xs" key={index} href={link.url} target="_blank">
+            {link.label}
+          </a>
+        ))}
         <p className="text-xs">{resume_obj?.email}</p>
       </div>
     </div>

@@ -24,6 +24,15 @@ const PersonalDetailForm = ({ isSaved, setIsSaved }) => {
       phone,
       email,
       job_title,
+      links:
+        resumeObj?.links.length > 0
+          ? resumeObj?.links
+          : [
+              {
+                label: "",
+                url: "",
+              },
+            ],
     });
   }, [resumeObj]);
 
@@ -67,6 +76,7 @@ const PersonalDetailForm = ({ isSaved, setIsSaved }) => {
             }}
           />
         </span>
+
         <FormField
           label="Job Title"
           type="text"
@@ -76,6 +86,57 @@ const PersonalDetailForm = ({ isSaved, setIsSaved }) => {
             setPersonalDetail({ ...personalDetail, job_title: value });
           }}
         />
+
+        {personalDetail?.links?.map((link, index) => (
+          <span key={index} className="flex w-full gap-4">
+            <FormField
+              label="Label"
+              type="text"
+              defaultValue={link.label}
+              handleChange={(value) => {
+                setIsSaved(false);
+                const links = personalDetail.links;
+                links[index].label = value;
+                setPersonalDetail({ ...personalDetail, links });
+              }}
+            />
+            <FormField
+              label="URL"
+              type="text"
+              defaultValue={link.url}
+              handleChange={(value) => {
+                setIsSaved(false);
+                const links = personalDetail.links;
+                links[index].url = value;
+                setPersonalDetail({ ...personalDetail, links });
+              }}
+            />
+          </span>
+        ))}
+        <span className="flex gap-4">
+          <Button
+            className="btn smooth-animation min-w-64 hover:text-white bg-white text-primary border-2 font-semibold border-primary" 
+            onClick={() => {
+              let links = personalDetail.links.filter(
+                (link) => link.label !== "" || link.url !== ""
+              );
+              setPersonalDetail({ ...personalDetail, links });
+            }}
+          >
+            Remove Empty Fields
+          </Button>
+          <Button
+            onClick={() => {
+              let links = [...personalDetail.links, { label: "", url: "" }];
+
+              setPersonalDetail({ ...personalDetail, links });
+            }}
+            className="btn smooth-animation min-w-64"
+          >
+            Add Link
+          </Button>
+        </span>
+
         <FormField
           label="Address"
           type="text"
