@@ -7,6 +7,7 @@ import EducationalPreview from "./preview/educational-preview";
 import SkillPreview from "./preview/skills-preview";
 import { useSelector } from "react-redux";
 import ProjectPreview from "./preview/project-preview";
+import CertificationPreview from "./preview/certification-preview";
 const ResumePreview = () => {
   const resume = useSelector((state) => state.resume);
   useEffect(() => {
@@ -29,6 +30,8 @@ const ResumePreview = () => {
         <EducationalPreview />
         {/* Projects */}
         <ProjectPreview />
+        {/* Certifications */}
+        <CertificationPreview />
       </div>
     </div>
   );

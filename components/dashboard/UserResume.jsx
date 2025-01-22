@@ -35,7 +35,7 @@ const UserResume = ({ session }) => {
       {resumes.map((resume, index) => (
         <div
           key={index}
-          className="w-full flex flex-col justify-between items-center h-full bg-primary/50 rounded-md overflow-hidden btn cursor-pointer smooth-animation"
+          className="w-full flex flex-col justify-between items-center h-full bg-primary/50 rounded-md overflow-hidden btn cursor-pointer smooth-animation relative"
           onClick={() => {
             router.push(`/dashboard/resume/${resume._id}/edit`);
           }}
@@ -51,6 +51,15 @@ const UserResume = ({ session }) => {
           </span>
           <p className="bg-pink-500 w-full text-center py-1 font-semibold  text-white">
             {resume.resume_title}
+          </p>
+          <p
+            className="absolute top-4 right-4 p-2 bg-white rounded-md cursor-pointer hover:bg-black hover:text-white"
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push(`/dashboard/resume/guest?resume_id=${resume._id}`);
+            }}
+          >
+            {"<>"}
           </p>
         </div>
       ))}

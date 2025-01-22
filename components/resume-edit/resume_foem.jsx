@@ -6,6 +6,7 @@ import SkillForm from "./resume-form/skill-form";
 import WorkExperienceForm from "./resume-form/work-experience-form";
 import EducationForm from "./resume-form/education-form";
 import ProjectsForm from "./resume-form/projects-form";
+import CertificationForm from "./resume-form/certification-form";
 
 const ResumeForm = () => {
   const [activeSection, setActiveSection] = useState("personal_details");
@@ -33,6 +34,9 @@ const ResumeForm = () => {
         )}
         {activeSection === "projects" && (
           <ProjectsForm isSaved={isSaved} setIsSaved={setIsSaved} />
+        )}
+        {activeSection === "certifications" && (
+          <CertificationForm isSaved={isSaved} setIsSaved={setIsSaved} />
         )}
       </div>
     </div>

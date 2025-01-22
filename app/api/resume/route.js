@@ -26,7 +26,7 @@ export async function POST(req) {
       });
     }
 
-    console.log(user);
+    // console.log(user);
     const new_resume = new UserResumeModel({
       user: user._id,
       resume_title: resume_title,

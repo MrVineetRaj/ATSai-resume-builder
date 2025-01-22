@@ -2,12 +2,13 @@ import { auth } from "@/auth";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Loaduser from "./Loaduser";
 
 const Navbar = async () => {
   const session = await auth();
 
   if (session && session?.user) {
-    console.log(session);
+    // console.log(session);
   }
   return (
     <nav className="flex items-center justify-between w-full px-8 py-2 border-b-2">
@@ -39,6 +40,8 @@ const Navbar = async () => {
           Get Started
         </Link>
       )}
+
+      <Loaduser session={session} />
     </nav>
   );
 };
