@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(req, { params }) {
   const resume_id = (await params).resume_id;
   const user_id = new URL(req.url).searchParams.get("user_id");
-  console.log(resume_id, user_id);
+  // console.log(resume_id, user_id);
   try {
     const resume = await UserResumeModel.findOne({
       _id: resume_id,
@@ -30,7 +30,7 @@ export async function PATCH(req, { params }) {
   try {
     const { update } = body;
 
-    console.log(update.certifications);
+    // console.log(update.certifications);
 
     const resume = await UserResumeModel.findByIdAndUpdate(resume_id, update, {
       new: true,

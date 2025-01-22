@@ -41,7 +41,7 @@ const WorkExperienceForm = ({ isSaved, setIsSaved }) => {
 
   const handleSave = () => {
     updateOneResume(resume_id, { experience:workExperience }).then((res) => {
-      console.log(res);
+      console.log("Updated");
     });
   };
   return (

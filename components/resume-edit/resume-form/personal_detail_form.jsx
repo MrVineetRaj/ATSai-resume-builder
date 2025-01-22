@@ -10,7 +10,7 @@ import { updateOneResume } from "@/lib/database/api/resume";
 const PersonalDetailForm = ({ isSaved, setIsSaved }) => {
   const params = useParams();
   const resume_id = params.resume_id;
-  console.log(resume_id);
+  // console.log(resume_id);
   const dispatch = useDispatch();
   const [personalDetail, setPersonalDetail] = useState();
   const resumeObj = useSelector((state) => state.resume);
@@ -38,7 +38,7 @@ const PersonalDetailForm = ({ isSaved, setIsSaved }) => {
 
   const handleSave = () => {
     updateOneResume(resume_id, personalDetail).then((res) => {
-      console.log(res);
+      console.log("Saved");
     });
   };
   return (

@@ -36,7 +36,7 @@ const EducationForm = ({ isSaved, setIsSaved }) => {
 
   const handleSave = () => {
     updateOneResume(resume_id, { education: educationalDetail }).then((res) => {
-      console.log(res);
+      console.log("Saved");
     });
   };
   return (

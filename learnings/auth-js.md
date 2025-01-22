@@ -105,7 +105,7 @@ const Login = async () => {
             action={async () => {
               "use server";
               const res = await signIn(option);
-              console.log("res => ", res);
+              // console.log("res => ", res);
             }}
           >
             <Button type="submit" variant="outline" className="min-w-48">

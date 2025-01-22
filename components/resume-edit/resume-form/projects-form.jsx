@@ -39,7 +39,7 @@ const ProjectsForm = ({ isSaved, setIsSaved }) => {
   }, [resumeObj]);
   const handleSave = () => {
     updateOneResume(resume_id, { projects: projects }).then((res) => {
-      console.log(res);
+      console.log("Saved");
     });
   };
   return (

@@ -40,13 +40,4 @@ const FormField = ({ type, label, defaultValue, handleChange }) => {
 
 export default FormField;
 
-/*
-<FormField
-          type={"textarea"}
-          handleChange={(value) => {
-            console.log(value);
-          }}
-          label={"Testing"}
-          defaultValue={"he"}
-        />
-*/
+

@@ -9,7 +9,7 @@ export async function POST(req) {
   try {
     const { email, resume_title } = data;
 
-    console.log(email, resume_title);
+    // console.log(email, resume_title);
     if (!email || !resume_title) {
       return NextResponse.json({
         status: "Error",

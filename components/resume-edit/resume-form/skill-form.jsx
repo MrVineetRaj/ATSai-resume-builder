@@ -29,7 +29,7 @@ const SkillForm = ({ isSaved, setIsSaved }) => {
 
   const handleSave = () => {
     updateOneResume(resume_id, { skills }).then((res) => {
-      console.log(res);
+      console.log("Updated");
     });
   };
 

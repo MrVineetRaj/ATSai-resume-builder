@@ -12,7 +12,7 @@ const Loaduser = ({ session }) => {
   useEffect(() => {
     // console.log(session?.user);
     if (session && session?.user) {
-      console.log(session?.user?.id);
+      // console.log(session?.user?.id);
       dispatch(
         setUser({
           _id: session.user.id,
@@ -23,7 +23,7 @@ const Loaduser = ({ session }) => {
       pathName.includes("/dashboard/resume/guest")
     ) {
       window.document.title = "User Resume";
-      console.log("redirecting");
+      // console.log("redirecting");
     }else{
       router.push("/");
     }

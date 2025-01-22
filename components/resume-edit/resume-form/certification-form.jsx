@@ -41,7 +41,7 @@ const CertificationForm = ({ isSaved, setIsSaved }) => {
     updateOneResume(resume_id, {
       certifications: tempCertificationDetails,
     }).then((res) => {
-      console.log(res);
+      console.log("Saved");
     });
   };
   return (

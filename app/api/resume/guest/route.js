@@ -13,7 +13,7 @@ export async function GET(req) {
 
   const resume = await UserResumeModel.findOne({ _id: resume_id });
 
-  console.log("resume_id ", resume_id);
+  // console.log("resume_id ", resume_id);
 
   if (!resume) {
     return NextResponse.json({

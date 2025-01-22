@@ -15,13 +15,14 @@ const Page = () => {
   const [resume, setResume] = useState();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const [printing, setPrinting] = useState(false);
   useEffect(() => {
     setLoading(true);
     const temp = new URLSearchParams(window.location.search).get("resume_id");
-    console.log(temp);
+    // console.log(temp);
 
     getOneResumeForGuest(temp).then((res) => {
-      console.log(res);
+      // console.log(res);
       if (!res.success) return;
       dispatch(setUserResume(res.data));
       setResume(res.data);
@@ -30,8 +31,23 @@ const Page = () => {
   }, []);
 
   const handlePrint = () => {
+    setPrinting(true);
     // Create a style element
     const style = document.createElement("style");
+
+    const resume = document.getElementById(
+      "__final__resume__to__print__guest__"
+    );
+
+    // Append the style element to the head of the document
+    // shadow-black rounded-lg border border-gray-500
+    resume.classList.remove("shadow-lg");
+    resume.classList.remove("shadow-black");
+    resume.classList.remove("rounded-lg");
+    resume.classList.remove("border");
+    resume.classList.remove("mb-8");
+    resume.classList.remove("border-gray-500");
+
     style.innerHTML = `
     @media print {
       body * {
@@ -52,23 +68,31 @@ const Page = () => {
 
     window.print();
 
+    resume.classList.add("shadow-lg");
+    resume.classList.add("shadow-black");
+    resume.classList.add("rounded-lg");
+    resume.classList.add("border");
+    resume.classList.add("border-gray-500");
+    resume.classList.add("mb-8");
+
     // Clean up
     document.head.removeChild(style);
+    setPrinting(false);
   };
 
   if (loading) return <>Loading...</>;
   if (!resume) return <>No Resume Found, Please Go Back and try again</>;
   return (
-    <div className="w-full flex flex-col gap-4 items-center justify-center px-2 sm:px-6 md:px-16 bg-primary min-h-screen">
+    <div className="w-full flex flex-col gap-4 items-center justify-center px-2 sm:px-6 md:px-16 min-h-screen bg-gradient-to-t from-primary/60 to-white ">
       <Button
-        className="mt-4 bg-white text-black min-w-64 hover:bg-black hover:text-white"
+        className="bg-black min-w-48 text-lg mt-2 font-semibold active:bg-gray-900 active:scale-90 transition-all duration-200 hover:bg-white hover:text-black hover:border-black border-2"
         onClick={handlePrint}
       >
         Print
       </Button>
       <div
         id="__final__resume__to__print__guest__"
-        className="w-full p-4 max-w-[210mm]  bg-white"
+        className="w-full p-4 max-w-[210mm] min-h[297mm]  bg-white shadow-lg shadow-black rounded-lg border border-gray-500 mb-8"
       >
         <PersonalDetailsPreview />
         <SkillPreview />

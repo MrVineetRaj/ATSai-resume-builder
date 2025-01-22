@@ -106,11 +106,11 @@ const ResumeFormConfig = ({ activeSection, setActiveSection, isSaved }) => {
       const resume_string = JSON.stringify(res.data[1] || {});
       const complete_input = `${resume_string} customize it for ${jobDescription} please sort all project according to it's relevance to the job description`;
 
-      console.log("Resume Received", complete_input);
+      // console.log("Resume Received", complete_input);
       generateResumeWithAi(complete_input).then(async (res) => {
         try {
           const json_resume = JSON.parse(res);
-          console.log(json_resume);
+          // console.log(json_resume);
           updateOneResume(resumeObj._id, json_resume);
           dispatch(setUserResume(json_resume));
         } catch (e) {
