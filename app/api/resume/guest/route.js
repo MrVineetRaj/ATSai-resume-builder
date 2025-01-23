@@ -11,9 +11,11 @@ export async function GET(req) {
     });
   }
 
-  const resume = await UserResumeModel.findOne({ _id: resume_id });
+  console.log("resume_id ", resume_id);
+  
+  const resume = await UserResumeModel.findById(resume_id).lean();
 
-  // console.log("resume_id ", resume_id);
+  // console.log("resume_id ", resume);
 
   if (!resume) {
     return NextResponse.json({

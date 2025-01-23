@@ -56,7 +56,7 @@ const UserResume = ({ session }) => {
             className="absolute top-4 right-4 p-2 bg-white rounded-md cursor-pointer hover:bg-black hover:text-white"
             onClick={(e) => {
               e.stopPropagation();
-              router.push(`/dashboard/resume/guest?resume_id=${resume._id}`);
+              router.push(`/shared/resume?resume_id=${resume._id}`);
             }}
           >
             {"<>"}
